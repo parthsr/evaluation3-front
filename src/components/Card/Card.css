@@ -1,0 +1,9 @@
+.Card-left{
+    background-color: aquamarine;
+}
+.Card-flex{
+    display:flex;
+    flex-direction: row;
+    padding:50px;
+    margin:100px;
+}
