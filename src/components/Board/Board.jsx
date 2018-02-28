@@ -21,6 +21,8 @@ class Board extends React.Component {
   onLogin = () => {
     axios.post('/user', { username: this.state.username }).then((response) => {
       console.log(response.data);
+      // const userAnswers = (response.data.answers).split(',');
+      // const userQuestions = (response.data.ques)
       this.setState({
         pageNo: 2,
         userInfo: response.data,

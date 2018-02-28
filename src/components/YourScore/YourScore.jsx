@@ -20,7 +20,16 @@ class YourScore extends React.Component {
   render() {
     const contentToDisplay = [];
     const scores = this.props.allScores;
-    scores.sort((a, b) => a.value - b.value);
+    let temp = 0;
+    for (let i = 0; i < scores.length - 1; i++) {
+      for (let j = i + 1; j < scores.length; j++) {
+        if (scores[i].score < scores[j].score) {
+          temp = scores[i];
+          scores[i] = scores[j];
+          scores[j] = temp;
+        }
+      }
+    }
     console.log(scores);
     for (let i = 0; i < Math.min(this.props.allScores.length, 5); i++) {
       console.log(scores);

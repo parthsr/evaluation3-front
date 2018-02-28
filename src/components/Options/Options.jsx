@@ -13,7 +13,7 @@ const Options = (props) =>
   return (
     <div>
       <label>
-        <input type="radio" checked={props.option === props.selectOption} value={props.option} onChange={(event) => { props.handleChange(event); }} />
+        <input type="radio" checked={props.option === props.userAnswers} value={props.option} onChange={(event) => { props.handleChange(event); }} />
         {props.option}
       </label>
     </div>

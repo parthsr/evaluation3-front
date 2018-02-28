@@ -34,7 +34,7 @@ class Questions extends React.Component {
       }
     });
   }
-  handleChange = (event, qid, iterator) => {
+  handleChange = (value, qid, iterator) => {
     const userQ = this.state.userQuestions.slice();
     const userA = this.state.userAnswers.slice();
     let scoreGarb = 0;
@@ -52,10 +52,10 @@ class Questions extends React.Component {
     console.log(scoreGarb);
     console.log(this.state.score);
     userQ.push(qid);
-    userA.push(event.target.value);
+    userA.push(value);
     console.log(userQ);
     axios.post();
-    if (event.target.value === (this.state.questions[iterator - 1].rightans)) {
+    if (value === (this.state.questions[iterator - 1].rightans)) {
       const options = {
         username: this.props.username,
         score: this.state.score + 1 - scoreGarb,
@@ -80,6 +80,7 @@ class Questions extends React.Component {
         });
       });
     }
+    axios();
   };
   render() {
     const contentToDisplay = [];
@@ -89,13 +90,14 @@ class Questions extends React.Component {
            className="Question"
            key={new Date() + i}
          ><Question
-           handleChange={(event, id, id2) => { this.handleChange(event, id, id2); }}
+           handleChange={(value, id, id2) => { this.handleChange(value, id, id2); }}
            qarray={this.state.userQuestions}
            qid={i + 1}
            question={this.state.questions[i]}
            userAnswers={this.state.userAnswers}
+           userQuestions={this.state.userQuestions}
          />
-          </div>);
+         </div>);
       contentToDisplay.push(newcontentToDisplay);
     }
     return (
