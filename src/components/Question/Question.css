@@ -2,7 +2,7 @@ table{
     border: 1px solid #000000;
      align-items: center;
     width:300px;
-    padding:0;
+    margin-left:350px;
 }   
 td{
     border:1px solid #000000;
