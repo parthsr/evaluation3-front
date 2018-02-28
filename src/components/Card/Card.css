@@ -6,8 +6,8 @@
     flex-direction: row;
     justify-content: space-between;
     position:absolute;
-    padding-top:200px;
-    padding-left:300px;
+    padding-top:300px;
+    padding-left:550px;
     flex-wrap: wrap;
 }
 .Card-right{
@@ -18,7 +18,7 @@
 .Card-welcome{
     font-size:30px;
     padding-top:100px;
-    padding-left:80px;
+    padding-left:50px;
     padding-right:50px;
 }
 .Card-to{
