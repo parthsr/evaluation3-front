@@ -48,25 +48,19 @@ class Question extends React.Component {
     }
     return (
       <div className="Question-div">
-        <table>
-          <td className="Question-topPad">
-            <tr>Question {this.props.qid}</tr>
-          </td>
-          <tr >
-            <td>
-              <div className="Question-question">
-                {this.props.question.question}
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div className="Question-option">
-                { contentToDisplay }
-              </div>
-            </td>
-          </tr>
-        </table>
+        <p className="Question-topPad">
+           Question {this.props.qid}
+        </p>
+        <p className="Question-p">
+          <div className="Question-question">
+            {this.props.question.question}
+          </div>
+        </p>
+        <p>
+          <div className="Question-option">
+            { contentToDisplay }
+          </div>
+        </p>
       </div>
     );
   }

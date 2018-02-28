@@ -9,8 +9,8 @@
     position:absolute;
     padding-top:17%;
     padding-left:35%;
+    padding-right:35%;
     flex-wrap: wrap;
-    flex-grow:1;
 }
 .Card-right{
     background-color: white;
@@ -61,5 +61,6 @@
     padding-bottom:3px;
     margin-top:50px;
     margin-left:60px;
+    margin-bottom:30px;
     text-align: center;
 }

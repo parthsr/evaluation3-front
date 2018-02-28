@@ -1,6 +1,7 @@
 .Board-body{
     background-color:rgb(22,33,78);
     height:100vh;
+    width:100vw;
     text-align: center;
     display:flex;
     flex-direction:row;
@@ -8,7 +9,7 @@
 
 }
 button{
-    margin-left:750px;
+    margin-left:45%;
     margin-top:30px;
     padding:10px;
     background-color: white;
