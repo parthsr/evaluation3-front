@@ -2,6 +2,10 @@
     background-color:rgb(22,33,78);
     height:100vh;
     text-align: center;
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+
 }
 button{
     margin-left:750px;
