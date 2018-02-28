@@ -12,6 +12,7 @@
 .YourScore-num{
     font-size:30px;
     padding-left:40px;
+    font-weight: bold;
 }
 .YourScore-text{
     color:rgb(251, 165, 26);
@@ -19,4 +20,8 @@
 }
 .YourScore-length{
     font-size:20px;
+}
+.YourScore-number{
+    color:black;
+
 }

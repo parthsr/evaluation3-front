@@ -35,7 +35,7 @@ class YourScore extends React.Component {
       console.log(scores);
       const content = (
         <div className="YourScore-score">
-          <p >{i + 1}.{scores[i].username}</p>
+          <p ><span className="YourScore-number">{i + 1}.</span>   {scores[i].username}</p>
           <p >{scores[i].score}</p>
         </div>);
       contentToDisplay.push(content);
