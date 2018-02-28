@@ -8,8 +8,8 @@ class Questions extends React.Component {
     super(props);
     this.state = {
       questions: '',
-      userQuestions: [],
-      userAnswers: [],
+      userQuestions: this.props.userQuestions,
+      userAnswers: this.props.userAnswers,
       score: 0,
     };
   }
@@ -54,33 +54,47 @@ class Questions extends React.Component {
     userQ.push(qid);
     userA.push(value);
     console.log(userQ);
-    axios.post();
-    if (value === (this.state.questions[iterator - 1].rightans)) {
-      const options = {
-        username: this.props.username,
-        score: this.state.score + 1 - scoreGarb,
-      };
-      axios.post('/score', options).then(() => {
-        this.setState({
-          userQuestions: userQ,
-          userAnswers: userA,
-          score: this.state.score + 1 - scoreGarb,
-        });
-      });
-    } else {
-      const options = {
-        username: this.props.username,
-        score: this.state.score - scoreGarb,
-      };
-      axios.post('/score', options).then(() => {
-        this.setState({
-          userQuestions: userQ,
-          userAnswers: userA,
-          score: this.state.score - scoreGarb,
-        });
-      });
+    console.log(userA);
+    let commaAns = '';
+    let commaQues = '';
+    for (let i = 0; i < userA.length; i++) {
+      commaAns += `${userA[i]},`;
+      commaQues += `${userQ[i]},`;
     }
-    axios();
+    console.log(commaAns);
+    const options = {
+
+      username: this.props.username,
+      answers: commaAns,
+      questions: commaQues,
+    };
+    axios.post('/updateUser', options).then(() => {
+      if (value === (this.state.questions[iterator - 1].rightans)) {
+        const options2 = {
+          username: this.props.username,
+          score: this.state.score + 1 - scoreGarb,
+        };
+        axios.post('/score', options2).then(() => {
+          this.setState({
+            userQuestions: userQ,
+            userAnswers: userA,
+            score: this.state.score + 1 - scoreGarb,
+          });
+        });
+      } else {
+        const options2 = {
+          username: this.props.username,
+          score: this.state.score - scoreGarb,
+        };
+        axios.post('/score', options2).then(() => {
+          this.setState({
+            userQuestions: userQ,
+            userAnswers: userA,
+            score: this.state.score - scoreGarb,
+          });
+        });
+      }
+    });
   };
   render() {
     const contentToDisplay = [];

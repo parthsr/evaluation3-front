@@ -12,7 +12,8 @@ class Board extends React.Component {
     this.state = {
       username: '',
       pageNo: 1,
-      userInfo: '',
+      userAnswers: [],
+      userQuestions: [],
       scoresAll: '',
       questions: '',
     };
@@ -21,12 +22,25 @@ class Board extends React.Component {
   onLogin = () => {
     axios.post('/user', { username: this.state.username }).then((response) => {
       console.log(response.data);
-      // const userAnswers = (response.data.answers).split(',');
-      // const userQuestions = (response.data.ques)
-      this.setState({
-        pageNo: 2,
-        userInfo: response.data,
-      });
+      if (response.data != null) {
+        console.log(response.data);
+        let userAnswers = (response.data[0].answers).split(',');
+        userAnswers = userAnswers.slice(0, userAnswers.length - 1);
+        let userQuestions = (response.data[0].questions).split(',');
+        userQuestions = userQuestions.slice(0, userQuestions.length - 1);
+        userQuestions = userQuestions.map(userQuestion => Number(userQuestion));
+        console.log(userAnswers);
+        console.log(userQuestions);
+        this.setState({
+          pageNo: 2,
+          userAnswers,
+          userQuestions,
+        });
+      } else {
+        this.setState({
+          pageNo: 2,
+        });
+      }
     });
   }
 
@@ -65,7 +79,12 @@ class Board extends React.Component {
       return (
         <div>
           <Header name={`Hello ${this.state.username}`} />
-          <Questions username={this.state.username} setQuestions={(ques) => { this.setQuestions(ques); }} />
+          <Questions
+            userQuestions={this.state.userQuestions}
+            userAnswers={this.state.userAnswers}
+            username={this.state.username}
+            setQuestions={(ques) => { this.setQuestions(ques); }}
+          />
           <button onClick={() => this.bringScores()}>Calculate</button>
         </div>
       );

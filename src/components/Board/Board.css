@@ -1,5 +1,7 @@
 .Board-body{
     background-color: blue;
+    width:100%;
+    height:100%;
 }
 button{
     margin-top:20px;
