@@ -8,6 +8,9 @@ class Questions extends React.Component {
     super(props);
     this.state = {
       questions: '',
+      userQuestions: [],
+      userAnswers: [],
+      score: 0,
     };
   }
 
@@ -19,6 +22,7 @@ class Questions extends React.Component {
             this.setState({
               questions: responseInner.data,
             });
+            this.props.setQuestions(responseInner.data);
           });
         });
       } else {
@@ -26,26 +30,76 @@ class Questions extends React.Component {
         this.setState({
           questions: response.data,
         });
+        this.props.setQuestions(response.data);
       }
     });
-    // axios.get('/sendAll').then((response) => {
-    //   console.log(response.data);
-    //   this.setState({
-    //     questions: response.data,
-    //   });
-    // });
   }
-
+  handleChange = (event, qid, iterator) => {
+    const userQ = this.state.userQuestions.slice();
+    const userA = this.state.userAnswers.slice();
+    let scoreGarb = 0;
+    if (this.state) {
+      if (userQ.indexOf(qid) >= 0) {
+        const index = userQ.indexOf(qid);
+        if (userA[index] === (this.state.questions[iterator - 1].rightans)) {
+          scoreGarb = 1;
+        }
+        userQ.splice(index, 1);
+        userA.splice(index, 1);
+        console.log(userQ);
+      }
+    }
+    console.log(scoreGarb);
+    console.log(this.state.score);
+    userQ.push(qid);
+    userA.push(event.target.value);
+    console.log(userQ);
+    axios.post();
+    if (event.target.value === (this.state.questions[iterator - 1].rightans)) {
+      const options = {
+        username: this.props.username,
+        score: this.state.score + 1 - scoreGarb,
+      };
+      axios.post('/score', options).then(() => {
+        this.setState({
+          userQuestions: userQ,
+          userAnswers: userA,
+          score: this.state.score + 1 - scoreGarb,
+        });
+      });
+    } else {
+      const options = {
+        username: this.props.username,
+        score: this.state.score - scoreGarb,
+      };
+      axios.post('/score', options).then(() => {
+        this.setState({
+          userQuestions: userQ,
+          userAnswers: userA,
+          score: this.state.score - scoreGarb,
+        });
+      });
+    }
+  };
   render() {
     const contentToDisplay = [];
     for (let i = 0; i < this.state.questions.length; i += 1) {
       const newcontentToDisplay =
-         (<div className="Question" key={new Date() + i}><Question question={this.state.questions[i]} /></div>);
+         (<div
+           className="Question"
+           key={new Date() + i}
+         ><Question
+           handleChange={(event, id, id2) => { this.handleChange(event, id, id2); }}
+           qarray={this.state.userQuestions}
+           qid={i + 1}
+           question={this.state.questions[i]}
+           userAnswers={this.state.userAnswers}
+         />
+          </div>);
       contentToDisplay.push(newcontentToDisplay);
     }
-    console.log(this.state.questions);
     return (
-      <div>
+      <div className="Questions-content">
         {contentToDisplay}
       </div>
     );

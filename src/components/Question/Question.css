@@ -1,0 +1,13 @@
+table{
+    border: 1px solid #000000;
+    padding:10px;
+    align-items: center;
+    width:300px;
+}   
+td{
+    margin:20px;
+    padding:20px;
+}
+.Question-div{
+    padding-left:300px;
+}
