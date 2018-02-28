@@ -1,13 +1,28 @@
 table{
     border: 1px solid #000000;
-    padding:10px;
-    align-items: center;
+     align-items: center;
     width:300px;
+    padding:0;
 }   
 td{
-    margin:20px;
-    padding:20px;
+    border:1px solid #000000;
+    margin:0;
 }
 .Question-div{
     padding-left:300px;
+    margin:0;
+}
+.Question-question{
+    background-color: rgb(68,199,245);
+    text-align:center;
+    padding:20px;
+}
+.Question-topPad{
+    padding:10px;
+    font-weight: bold;
+}
+
+.Question-option{
+    padding:20px;
+    font-weight: bold;
 }

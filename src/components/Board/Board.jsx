@@ -22,7 +22,7 @@ class Board extends React.Component {
   onLogin = () => {
     axios.post('/user', { username: this.state.username }).then((response) => {
       console.log(response.data);
-      if (response.data != null) {
+      if (response.data[0] != null) {
         console.log(response.data);
         let userAnswers = (response.data[0].answers).split(',');
         userAnswers = userAnswers.slice(0, userAnswers.length - 1);
@@ -65,6 +65,11 @@ class Board extends React.Component {
       });
     });
   }
+  playAgain = () => {
+    this.setState({
+      pageNo: 1,
+    });
+  }
   render() {
     if (this.state.pageNo === 1) {
       return (
@@ -93,6 +98,7 @@ class Board extends React.Component {
     return (
       <div>
         <YourScore username={this.state.username}allScores={this.state.scoresAll} questions={this.state.questions} />
+        <button onClick={() => this.playAgain()}>Play Again</button>
       </div>
     );
   }

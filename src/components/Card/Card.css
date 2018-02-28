@@ -1,9 +1,62 @@
 .Card-left{
-    background-color: aquamarine;
+    background-color: rgb(68,195,249);    
 }
 .Card-flex{
     display:flex;
     flex-direction: row;
-    padding:50px;
-    margin:100px;
+    justify-content: space-between;
+    position:absolute;
+    padding-top:200px;
+    padding-left:300px;
+    flex-wrap: wrap;
+}
+.Card-right{
+    background-color: white;
+    width:250px;
+    padding:0;
+}
+.Card-welcome{
+    font-size:30px;
+    padding-top:100px;
+    padding-left:80px;
+    padding-right:50px;
+}
+.Card-to{
+    font-size:30px;
+    padding-left:50px;
+    padding-right:50px;
+}
+.Card-quizzy{
+    color:white;
+    font-size:30px;
+    padding-bottom:100px;
+    padding-left:50px;
+    padding-right:50px;
+}
+
+.Card-login{
+    font-size:30px;
+    text-align: left;
+    padding-top:20px;
+    padding:10px;
+}
+
+.Card-username{
+    text-align:left;
+    padding-top:70px;
+    padding-left:10px;
+}
+.Card-input{
+    width:200px;
+}
+.Card-button{
+    margin:0;
+    display: block;
+    padding-left:50px;
+    padding-right:50px;
+    padding-top:3px;
+    padding-bottom:3px;
+    margin-top:50px;
+    margin-left:60px;
+    text-align: center;
 }

@@ -49,7 +49,7 @@ class Question extends React.Component {
     return (
       <div className="Question-div">
         <table>
-          <td>
+          <td className="Question-topPad">
             <tr>Question {this.props.qid}</tr>
           </td>
           <tr >

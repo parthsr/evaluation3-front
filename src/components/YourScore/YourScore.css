@@ -3,5 +3,20 @@
     flex-direction: row;
     justify-content: space-between;
     padding:10px;
-    background-color: aqua;
+    background-color: rgb(68,195,249);
+    margin:10px;
+    border:1px solid #000000;
+    color:white;
+}
+
+.YourScore-num{
+    font-size:30px;
+    padding-left:40px;
+}
+.YourScore-text{
+    color:rgb(251, 165, 26);
+
+}
+.YourScore-length{
+    font-size:20px;
 }

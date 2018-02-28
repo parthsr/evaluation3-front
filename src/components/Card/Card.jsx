@@ -13,15 +13,15 @@ class Card extends React.Component {
     return (
       <div className="Card-flex">
         <div className="Card-left">
-          <p>Welcome</p>
-          <p>to</p>
-          <p>Quizzy!</p>
+          <p className="Card-welcome">Welcome</p>
+          <p className="Card-to">to</p>
+          <p className="Card-quizzy">Quizzy!</p>
         </div>
-        <div>
-          <p>Login</p>
-          <p>UserName</p>
-          <input onChange={event => this.props.nameUser(event)} />
-          <button onClick={() => this.props.onClick()}>Login</button>
+        <div className="Card-right">
+          <p className="Card-login">Login</p>
+          <p className="Card-username">UserName</p>
+          <input className="Card-input" onChange={event => this.props.nameUser(event)} />
+          <button className="Card-button"onClick={() => this.props.onClick()}>Login</button>
         </div>
       </div>
     );

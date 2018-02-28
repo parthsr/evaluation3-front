@@ -43,8 +43,12 @@ class YourScore extends React.Component {
     }
     return (
       <div>
-        <p>{JSON.stringify(this.props.questions.length)}</p>
-        <p>{this.state.score}</p>
+        <p className="YourScore-text">Your Score</p>
+        <div className="YourScore-my">
+          <p className="YourScore-num">{this.state.score}
+            <span className="YourScore-length">/{JSON.stringify(this.props.questions.length)}</span>
+          </p>
+        </div>
         <div>
           {contentToDisplay}
         </div>
